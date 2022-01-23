@@ -1,6 +1,7 @@
 from sys import argv
 f = open(argv[1])
-exclude = ['import','print','from','for','def','else:','if']
+exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval',]
+funcs = {}
 def out(text):
     print(text)
 def read(name):
@@ -12,6 +13,13 @@ def append(name,text):
 def tru(arg,exc):
     if arg:
         exec(exc)
+def func(name,code):
+    funcs.update({name:code})
+def call(name):
+    if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
+        print('Error')
+    else:
+        exec(funcs[func])
 for line in f:
     if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
         print('Error')
