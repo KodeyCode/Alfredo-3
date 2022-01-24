@@ -27,9 +27,9 @@ def call(name):
     if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
         print('Error')
     else:
-        exec(funcs[func])\
+        exec(funcs[func])
 def use(mod):
-    f = open('lib/'+mod)
+    f = open('lib/'+mod+'.alf')
     for line in f:
         if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
             print('Error')
