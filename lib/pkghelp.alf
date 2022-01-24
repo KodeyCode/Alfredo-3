@@ -1,0 +1,3 @@
+out("To make an APG package, make a Github repo. Your repo will need atleast two files: code.alf and desc.txt.")
+out("In code.alf put all your main code. The stuff that will be imported and executed. Consider it as an __init__.py type of file.")
+out("In desc.txt put the description of your package. This can be as long as you like. It is just a text file so whatever you write will be seen")
