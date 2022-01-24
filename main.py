@@ -1,6 +1,6 @@
 from sys import argv
 f = open(argv[1])
-exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval']
+exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval','open','with']
 funcs = {}
 def out(text):
     print(text)
@@ -38,5 +38,7 @@ def use(mod):
 for line in f:
     if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
         print('Error')
+    elif line.startswith('//'):
+    	pass
     else:
         exec(line)
