@@ -31,7 +31,7 @@ def func(name,arg,code):
     funcs.update({name+' @ '+arg:code})
 def call(name,nuf):
     if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
-        print('Syntax Error: In function '+name+'\n    '+funcs[name]+'\nUnidentified command.)
+        print('Syntax Error: In function '+name+'\n    '+funcs[name]+'\nUnidentified command.')
     else:
         k = []
         for key in funcs.keys():
