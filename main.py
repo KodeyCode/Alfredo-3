@@ -28,20 +28,30 @@ def tru(arg,exc,els):
         else:
             exec(els)
 def func(name,arg,code):
-    exec(arg)
-    funcs.update({name:code})
-def call(name):
+    funcs.update({name+' @ '+arg:code})
+def call(name,nuf):
     if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
-        print('Error')
+        print('Syntax Error: In function '+name+'\n    '+funcs[name]+'\nUnidentified command.)
     else:
-        exec(funcs[func])
+        k = []
+        for key in funcs.keys():
+              k.append(key)
+        fc = k[nuf].split(' @ ')[1]
+        exec(funcs[fc])
+        exec(funcs[name.split(' @ ')[0]])
 def use(mod):
     f = open('lib/'+mod+'.alf')
+    lineNum = 1
     for line in f:
         if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
-            print('Error')
+            print('Syntax Error at line '+str(lineNum)+' in file '+f.name+'\n    '+line+'\nUnidentified command')
+        elif line.startswith('//'):
+            pass
+        elif line.split(' ')[0] in keys:
+            exec(keys[line.split(' ')[0]]+'('+line.split(' ')[1]+')')
         else:
             exec(line)
+        lineNum +=1
 def stk(c1,c2):
     codes = [c1,c2]
     num = 1
