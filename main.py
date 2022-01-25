@@ -29,15 +29,14 @@ def tru(arg,exc,els):
             exec(els)
 def func(name,arg,code):
     funcs.update({name+' @ '+arg:code})
-def call(name,nuf):
+def call(name,arg,nuf):
     if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
         print('Syntax Error: In function '+name+'\n    '+funcs[name]+'\nUnidentified command.')
     else:
         k = []
         for key in funcs.keys():
               k.append(key)
-        fc = k[nuf].split(' @ ')[1]
-        exec(funcs[fc])
+        exec(funcs[arg])
         exec(funcs[name.split(' @ ')[0]])
 def use(mod):
     f = open('lib/'+mod+'.alf')
