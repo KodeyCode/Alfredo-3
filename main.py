@@ -28,6 +28,7 @@ def tru(arg,exc,els):
         else:
             exec(els)
 def func(name,arg,code):
+    exec(arg)
     funcs.update({name:code})
 def call(name):
     if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
