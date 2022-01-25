@@ -51,14 +51,13 @@ def use(mod):
         else:
             exec(line)
         lineNum +=1
-def stk(c1,c2):
-    codes = [c1,c2]
+def stk(stack):
+    codes = []
+    for item in stack.split(',')
+        codes.append(item)
     num = 1
     for i in range(len(codes)):
-        if codes[num].split(' ')[0] in keys:
-            exec(keys[codes[num].split(' ')[0]]+'('+codes[num].split(' ')[1]+')')
-        else:
-            exec(codes[num])
+        exec(codes[num])
         num +=1
 lineNum = 1
 for line in f:
