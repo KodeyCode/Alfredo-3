@@ -1,6 +1,6 @@
 from sys import argv
 f = open(argv[1])
-exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval','open','with']
+exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval','open','with','#']
 keys = {
     'use':'use',
     'func':'func',
@@ -40,12 +40,14 @@ def use(mod):
             print('Error')
         else:
             exec(line)
+lineNum = 1
 for line in f:
     if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
-        print('Error')
+        print('Syntax Error at line '+str(lineNum)+' in file '+f.name+'\n    '+line+'\nUnidentified command')
     elif line.startswith('//'):
         pass
     elif line.split(' ')[0] in keys:
         exec(keys[line.split(' ')[0]]+'('+line.split(' ')[1]+')')
     else:
         exec(line)
+    lineNume+=1
