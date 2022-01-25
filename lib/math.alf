@@ -1,0 +1,4 @@
+func 'plus','num1,num2','out(num1+num2)'
+func 'minus','num1,num2','out(num1-num2)'
+func 'multi','num1,num2','out(num1*num2)'
+func 'divide','num1,num2','out(num1/num2)'
