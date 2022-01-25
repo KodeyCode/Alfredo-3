@@ -1,10 +1,11 @@
 from sys import argv
 f = open(argv[1])
-exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval','open','with','#']
+exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval','open','with','while']
 keys = {
     'use':'use',
     'func':'func',
-    'call':'call'
+    'call':'call',
+    'stack':'stk'
 }
 funcs = {}
 def out(text):
@@ -26,7 +27,7 @@ def tru(arg,exc,els):
             print('Error')
         else:
             exec(els)
-def func(name,code):
+def func(name,arg,code):
     funcs.update({name:code})
 def call(name):
     if funcs[name].split('(')[0] in exclude or funcs[name].split(' ')[0] in exclude:
@@ -40,6 +41,15 @@ def use(mod):
             print('Error')
         else:
             exec(line)
+def stk(c1,c2):
+    codes = [c1,c2]
+    num = 1
+    for i in range(len(codes)):
+        if codes[num].split(' ')[0] in keys:
+            exec(keys[codes[num].split(' ')[0]]+'('+codes[num].split(' ')[1]+')')
+        else:
+            exec(codes[num])
+        num +=1
 lineNum = 1
 for line in f:
     if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
@@ -50,4 +60,4 @@ for line in f:
         exec(keys[line.split(' ')[0]]+'('+line.split(' ')[1]+')')
     else:
         exec(line)
-    lineNume+=1
+    lineNum +=1
