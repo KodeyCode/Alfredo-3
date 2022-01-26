@@ -61,7 +61,7 @@ def stk(stack):
     for i in range(len(codes)):
         exec(codes[i])
 def link(file):
-    immod(file)
+    immod('lib/'+file)
 lineNum = 1
 for line in f:
     if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
