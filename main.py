@@ -58,8 +58,8 @@ def stk(stack):
     for item in stack.split(','):
         codes.append(item)
     num = 1
-    for item in codes:
-        exec(codes[item])
+    for i in range(len(codes)):
+        exec(codes[i])
 def link(file):
     immod(file)
 lineNum = 1
