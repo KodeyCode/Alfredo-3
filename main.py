@@ -69,8 +69,8 @@ for line in f:
         print('Syntax Error at line '+str(lineNum)+' in file '+f.name+'\n    '+line+'\nUnidentified command')
     elif line.startswith('//'):
         pass
-    elif line.split(' ')[0] in keys:
-        exec(keys[line.split(' ')[0]]+'('+line.split(' ')[1]+')')
+    elif line.split(':')[0] in keys:
+        exec(keys[line.split(':')[0]]+'('+line.split(':')[1]+')')
     else:
         exec(line)
     lineNum +=1
