@@ -1,11 +1,13 @@
 from sys import argv
+from importlib import import_module as immod
 f = open(argv[1])
 exclude = ['import','print','for','if','else:','elif','from','for','def','class','exec','input','eval','open','with','while']
 keys = {
     'use':'use',
     'func':'func',
     'call':'call',
-    'stack':'stk'
+    'stack':'stk',
+    'link':'link'
 }
 funcs = {}
 def out(text):
@@ -59,6 +61,8 @@ def stk(stack):
     for i in range(len(codes)):
         exec(codes[num])
         num +=1
+def link(file):
+    immod(file)
 lineNum = 1
 for line in f:
     if line.split('(')[0] in exclude or line.split(' ')[0] in exclude:
