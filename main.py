@@ -55,7 +55,7 @@ def use(mod):
         lineNum +=1
 def stk(stack):
     codes = []
-    for item in stack.split(',')
+    for item in stack.split(','):
         codes.append(item)
     num = 1
     for i in range(len(codes)):
